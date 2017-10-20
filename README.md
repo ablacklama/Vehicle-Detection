@@ -5,14 +5,20 @@ The goal of the project is to detect and draw squares around cars in dashcam foo
 2. I've heard models like this are more commonly used in the industry than the HOG/SVM style approach Udacity teaches
 3. I'm stupid (we'll get to this later)
 
+I also choose to implement it in Keras because it's accessable and makes the nice and small.
 ## What is YOLO?
 "YOLO" or "You Only Look Once" (hah ಠ_ಠ), is a massive Convolutional Nueral network for object detection and classification. From it's [website](https://pjreddie.com/darknet/yolo/) "This network divides the image into regions and predicts bounding boxes and probabilities for each region. These bounding boxes are weighted by the predicted probabilities."
+
 ![](https://pjreddie.com/media/image/model2.png)
 
 YOLO is great and on the cutting edge of object detection, but... it's really big and it's really slow. So since I'm not looking to put this network in a car, i decided to use the smaller [tiny_yolo](https://pjreddie.com/darknet/tiny-darknet/) instead.
 
 ## tiny-YOLO architecture
+
+
 ![model](./examples/mode_yolo_plot.jpg)
+
+
 
 
     ____________________________________________________________________________________________________
@@ -116,6 +122,6 @@ Here are a few images that show the detection power of the network:
 <img src="./output_images/output3.jpg" width="500"/>
 
 ## Reflections
-
+Tiny-YOLO works pretty well but i'd love to see how it could preform with the full YOLO or even SDD. Additionally, it would be nice to implement a more robust tracking function that could keep track of the vilocity of objects. This would make it easy to estimate their position in upcoming frames. My shortcut of running YOLO multiple times per frame is just that, a shortcut. It would be much better to simply train the full YOLO on a highway dataset so that it would know to look for smaller cars. In the future I'd love to have the time and GPU's to train my own YOLO or SDD on open source dashcam datasets.
 
 
