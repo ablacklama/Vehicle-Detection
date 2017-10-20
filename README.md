@@ -108,9 +108,10 @@ Each cell in the grid is responcible for predicting two bounding boxes. Thus the
 ### Box Coordinates
 This is where the boxes are predicted. Each box is represented with four numbers (x,y,width,height). These numbers are relative to the cell they're in and have to be scaled to be represented on the entire image. Once again, each cell predicts two bounding boxes so 2 boxes * 4 number per box * 49 cells = 392
 
-## Weights
+## Weights/Training
+I don't have a big deep learning computer so even with the tiny-YOLO I need to either use a cpu so it gets stored in RAM or use pretrained weights. I choose the latter. The weights I used are from the darknet site and are from training the model on the VOC2012 Dataset. This is why there are 20 classes to choose from even though we'd be happy with just a car class.
 
-I don't have a big deep learning computer so even with the tiny-YOLO I need to either use a cpu so it gets stored in RAM or use pretrained weights. I choose the latter. I didn't include the weights here because github doesn't like big files, but you can download them yourself [here](https://pjreddie.com/media/files/yolo.weights)
+I didn't include the weights here because github doesn't like big files, but you can download them yourself [here](https://pjreddie.com/media/files/yolo.weights)
 
 ## Making up for size difference
 The model i'm using is trained to recognize objects that are generally much closer (and thus bigger) than the cars i'm trying to detect, so I had to work around it. Along with running YOLO on the whole image, I also ran it on subsections. The fixesd subsection was zoomed in on the highway ahead to try to get farther cars. But I also kept track of where detected cars were and tried to find them in a zoomed in image of that position again in the next few frames. This also made up for some of the performace loss i got from using tiny-yolo vs the full model. 
@@ -126,6 +127,6 @@ Here are a few images that show the detection power of the network:
 <img src="./output_images/output3.jpg" width="500"/>
 
 ## Reflections
-Tiny-YOLO works pretty well but i'd love to see how it could preform with the full YOLO or even SDD. Additionally, it would be nice to implement a more robust tracking function that could keep track of the vilocity of objects. This would make it easy to estimate their position in upcoming frames. My shortcut of running YOLO multiple times per frame is just that, a shortcut. It would be much better to simply train the full YOLO on a highway dataset so that it would know to look for smaller cars. In the future I'd love to have the time and GPU's to train my own YOLO or SDD on open source dashcam datasets.
+Tiny-YOLO works pretty well but i'd love to see how it could preform with the full YOLO or even SDD. Additionally, it would be nice to implement a more robust tracking function that could keep track of the vilocity of objects. This would make it easy to estimate their position in upcoming frames. My shortcut of running YOLO multiple times per frame is just that, a shortcut. It would be much better to simply train the full YOLO on a highway dataset so that it would know to look for smaller cars. This would also mean i didn't have to discard 19 out of 20 classes the network produced and would make it more accurate as a result. In the future I'd love to have the time and GPU's to train my own YOLO or SDD on open source dashcam datasets.
 
 
