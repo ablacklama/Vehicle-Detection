@@ -120,6 +120,9 @@ Here's an example of the standard cropping i do to zoom the image in on the high
 
 <div style="text-align: center;"><IMG SRC="./output_images/resized.png" ALT="cropped" width="300"></div>
 
+## Heatmapping
+I used a heatmap of the past 8 frames to iliminate most false detections. False detections are generally flukes and happen for only a frame or two. The heatmap kept track of the total number of detections in any area of the image for the past 8 frames and if there were less than 3, I discarded that detection.
+
 ## Results
 Here are a few images that show the detection power of the network:
 <img src="./output_images/output1.png" width="500"/>
@@ -127,7 +130,14 @@ Here are a few images that show the detection power of the network:
 <img src="./output_images/output3.jpg" width="500"/>
 
 ## Reflections
-Tiny-YOLO works pretty well but i'd love to see how it could preform with the full YOLO or even SDD. Additionally, it would be nice to implement a more robust tracking function that could keep track of the vilocity of objects. This would make it easy to estimate their position in upcoming frames. My shortcut of running YOLO multiple times per frame is just that, a shortcut. It would be much better to simply train the full YOLO on a highway dataset so that it would know to look for smaller cars. This would also mean i didn't have to discard 19 out of 20 classes the network produced and would make it more accurate as a result. In the future I'd love to have the time and GPU's to train my own YOLO or SDD on open source dashcam datasets.
+Tiny-YOLO works pretty well but i'd love to see how it could preform with the full YOLO or even SDD. In the future I'd love to have the time and GPU's to train my own YOLO or SDD on open source dashcam datasets.
+
+Additionally, it would be nice to implement a more robust tracking function that could keep track of the vilocity of objects. This would make it easy to estimate their position in upcoming frames. 
+
+My shortcut of running YOLO multiple times per frame is just that, a shortcut. It would be much better to simply train the full YOLO on a highway dataset so that it would know to look for smaller cars. This would also mean i didn't have to discard 19 out of 20 classes the network produced and would make it more accurate as a result. 
+
+I'd also like to keep track of which car is which and use it's mean box for the last few frames to eliminate jitter.
+
 
 
 
