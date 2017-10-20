@@ -3,9 +3,9 @@ The goal of the project is to detect and draw squares around cars in dashcam foo
 
 1. I love deep learning and it's much more interesting to me to play with neural networks then more traditional approaches
 2. I've heard models like this are more commonly used in the industry than the HOG/SVM style approach Udacity teaches
-3. I'm stupid (we'll get to this later)
 
-I also choose to implement it in Keras because it's accessable and makes the nice and small.
+I also choose to implement it in Keras because it's accessable and makes the nice and small. On that note, I've tried to include a more detailed description of YOLO's output than you can find anywhere else by googling. I spent a long time figuring out what each number meant and hopefully you won't have to do so. I've also put some effort into commenting profusely throughout the [`utils.py`](utils/utils.py) file to make it easy to understand. Feel free to use any parts of this code you want.
+
 ## What is YOLO?
 "YOLO" or "You Only Look Once" (hah ಠ_ಠ), is a massive Convolutional Nueral network for object detection and classification. From it's [website](https://pjreddie.com/darknet/yolo/) "This network divides the image into regions and predicts bounding boxes and probabilities for each region. These bounding boxes are weighted by the predicted probabilities."
 
@@ -128,5 +128,6 @@ Here are a few images that show the detection power of the network:
 
 ## Reflections
 Tiny-YOLO works pretty well but i'd love to see how it could preform with the full YOLO or even SDD. Additionally, it would be nice to implement a more robust tracking function that could keep track of the vilocity of objects. This would make it easy to estimate their position in upcoming frames. My shortcut of running YOLO multiple times per frame is just that, a shortcut. It would be much better to simply train the full YOLO on a highway dataset so that it would know to look for smaller cars. This would also mean i didn't have to discard 19 out of 20 classes the network produced and would make it more accurate as a result. In the future I'd love to have the time and GPU's to train my own YOLO or SDD on open source dashcam datasets.
+
 
 
