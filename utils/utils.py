@@ -86,13 +86,10 @@ def process_output(yolo_output, threshold=0.2, padhw=(98,0), shaved=False, shave
         for gridx in range(S):
             for index1 in range(B):
 
-                #get the probability that htere is a car within this bounding box by using the confidence score and
-                #the class probability.
                 box = bb()
                 box.c = confs[gridn, index1]
                 p = probs[gridn, :] * box.c
 
-                #if there is a car there...
                 if (p[car_class] >= threshold):
 
                     #find pixel values of xywh in current 448,448 image
@@ -160,7 +157,7 @@ def remove_duplicates(boxes, img):
             box2 = boxes[index2]
             boxA = [box1.x1, box1.y1, box1.x2, box1.y2]
             boxB = [box2.x1, box2.y1, box2.x2, box2.y2]
-            if bb_intersection_over_union(boxA, boxB) >= .15:
+            if bb_intersection_over_union(boxA, boxB) >= .05:
                 boxes[index2].prob = 0
     boxes = [box for box in boxes if box.prob > 0.]
     return boxes
@@ -181,7 +178,6 @@ def draw_boxes(boxes, img):
 
 
 #get the precent of overlap of two boxes
-#code from: https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/
 def bb_intersection_over_union(boxA, boxB):
     # determine the (x, y)-coordinates of the intersection rectangle
     xA = max(boxA[0], boxB[0])
