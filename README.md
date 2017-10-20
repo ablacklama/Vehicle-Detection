@@ -113,7 +113,11 @@ This is where the boxes are predicted. Each box is represented with four numbers
 I don't have a big deep learning computer so even with the tiny-YOLO I need to either use a cpu so it gets stored in RAM or use pretrained weights. I choose the latter. I didn't include the weights here because github doesn't like big files, but you can download them yourself [here](https://pjreddie.com/media/files/yolo.weights)
 
 ## Making up for size difference
-The model i'm using is trained to recognize objects that are generally much closer (and thus bigger) than the cars i'm trying to detect, so I had to work around it. Along with running YOLO on the whole image, I also ran it on subsections. The fixesd subsection was zoomed in on the highway ahead to try to get farther cars. But I also kept track of where detected cars were and tried to find them in a zoomed in image of that position again in the next few frames. This also made up for some of the performace loss i got from using tiny-yolo vs the full model.
+The model i'm using is trained to recognize objects that are generally much closer (and thus bigger) than the cars i'm trying to detect, so I had to work around it. Along with running YOLO on the whole image, I also ran it on subsections. The fixesd subsection was zoomed in on the highway ahead to try to get farther cars. But I also kept track of where detected cars were and tried to find them in a zoomed in image of that position again in the next few frames. This also made up for some of the performace loss i got from using tiny-yolo vs the full model. 
+
+Here's an example of the standard cropping i do to zoom the image in on the highway ahead. As you can see, padding has been automatically added on the top and bottom to make the image the proper 448x448.
+
+<div style="text-align: center;"><IMG SRC="./output_images/resized.png" ALT="cropped" width="400"></div>
 
 ## Results
 Here are a few images that show the detection power of the network:
