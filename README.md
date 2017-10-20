@@ -118,7 +118,7 @@ The model i'm using is trained to recognize objects that are generally much clos
 
 Here's an example of the standard cropping i do to zoom the image in on the highway ahead. As you can see, padding has been automatically added on the top and bottom to make the image the proper 448x448.
 
-<div style="text-align: center;"><IMG SRC="./output_images/resized.png" ALT="cropped" width="400"></div>
+<div style="text-align: center;"><IMG SRC="./output_images/resized.png" ALT="cropped" width="300"></div>
 
 ## Results
 Here are a few images that show the detection power of the network:
