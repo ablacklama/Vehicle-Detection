@@ -127,6 +127,7 @@ I used a heatmap of the past 8 frames to iliminate most false detections. False 
 [Result video](https://youtu.be/2EtTBv0DjKc)
 
 And here are a few example images of the output:
+
 <img src="./output_images/output1.png" width="500"/>
 <img src="./output_images/output2.jpg" width="500"/>
 <img src="./output_images/output3.jpg" width="500"/>
