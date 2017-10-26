@@ -124,7 +124,9 @@ Here's an example of the standard cropping i do to zoom the image in on the high
 I used a heatmap of the past 8 frames to iliminate most false detections. False detections are generally flukes and happen for only a frame or two. The heatmap kept track of the total number of detections in any area of the image for the past 8 frames and if there were less than 3, I discarded that detection.
 
 ## Results
-Here are a few images that show the detection power of the network:
+[Result video](https://youtu.be/2EtTBv0DjKc)
+
+And here are a few example images of the output:
 <img src="./output_images/output1.png" width="500"/>
 <img src="./output_images/output2.jpg" width="500"/>
 <img src="./output_images/output3.jpg" width="500"/>
