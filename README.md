@@ -1,7 +1,7 @@
 # Vehicle Detection
 The goal of the project is to detect and draw squares around cars in dashcam footage. For this project I use a YOLO image detection network to predict the boxes and labels that I put on the image. I choose to use a one-shot approach to this instead of Udacity's recommended approach for a few reasons:
 
-1. I love deep learning and it's much more interesting to me to play with neural networks then more traditional approaches
+1. I love deep learning and I'll have much more fun playing with Neural networks than I will with more traditional approaches
 2. I've heard models like this are more commonly used in the industry than the HOG/SVM style approach Udacity teaches
 
 I also choose to implement it in Keras because it's accessable and makes the nice and small. On that note, I've tried to include a more detailed description of YOLO's output than you can find anywhere else by googling. I spent a long time figuring out what each number meant and hopefully you won't have to do so. I've also put some effort into commenting profusely throughout the [`utils.py`](utils/utils.py) file to make it easy to understand. Feel free to use any parts of this code you want.
